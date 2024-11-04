@@ -10,7 +10,6 @@ env_vars_to_clear = [
     'DB_PORT',
     'SECRET_AUTH',
     'LIFESPAN_ACCESS_TOKEN',
-    'LIFESPAN_REFRESH_TOKEN', 
 ]
 
 for var in env_vars_to_clear:
@@ -25,5 +24,4 @@ DB_USER=os.getenv("DB_USER")
 DB_PASSWORD=os.getenv("DB_PASSWORD")
 SECRET_AUTH=os.getenv("SECRET_AUTH")
 LIFESPAN_ACCESS_TOKEN = int(os.getenv("LIFESPAN_ACCESS_TOKEN"))
-LIFESPAN_REFRESH_TOKEN = int(os.getenv("LIFESPAN_REFRESH_TOKEN"))
-REDIS_URL=os.getenv("REDIS_URL")
+
