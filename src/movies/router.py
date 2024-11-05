@@ -65,7 +65,12 @@ async def get_all_favorites(
     current_user: str = Depends(get_access_token),
     session_db: AsyncSession = Depends(get_async_session),
 ):
-    user = jwt.decode(current_user.encode(), SECRET_AUTH, algorithms=["HS256"], audience=["fastapi-users:auth"])
+    user = jwt.decode(
+        current_user.encode(),
+        SECRET_AUTH,
+        algorithms=["HS256"],
+        audience=["fastapi-users:auth"]
+        )
     query = await orm_get_all_favorites_movies(session_db, int(user["sub"]))
     return query
 
@@ -123,7 +128,12 @@ async def add_favorites(
         )
     movie_id = int(query.kinopoisk_id)
     print(movie_id)
-    user = jwt.decode(current_user.encode(), SECRET_AUTH, algorithms=["HS256"], audience=["fastapi-users:auth"])
+    user = jwt.decode(
+        current_user.encode(),
+        SECRET_AUTH,
+        algorithms=["HS256"],
+        audience=["fastapi-users:auth"]
+        )
     query = await orm_add_favorite(session_db, int(user["sub"]), movie_id)
     return query
 
@@ -134,7 +144,12 @@ async def delete_favorites(
     current_user: str = Depends(get_access_token),
     session_db: AsyncSession = Depends(get_async_session),
 ):
-    user = jwt.decode(current_user.encode(), SECRET_AUTH, algorithms=["HS256"], audience=["fastapi-users:auth"])
+    user = jwt.decode(
+        current_user.encode(),
+        SECRET_AUTH,
+        algorithms=["HS256"],
+        audience=["fastapi-users:auth"]
+        )
     query = await orm_delete_favorite_movie(session_db, int(user["sub"]), str(kinopoisk_id))
     return query
 
